@@ -6,4 +6,3 @@ class WebSocketClient(TypedDict):
     handler: WebSocketHandler
     address: Tuple[str, int]
     
-    
