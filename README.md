@@ -16,7 +16,7 @@ pip install -r requirements.txt
 
 在最外層創建 `.env` 檔案並寫入 
 ```
-TOKEN="Your Discord Bot Token
+TOKEN="Your Discord Bot Token"
 ```
 
 接著到 `discord.json` 設定訊息的頻道 id
