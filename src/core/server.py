@@ -41,7 +41,7 @@ class WebSocketServerThreading:
 
             if header.get("eventName") == "PlayerMessage" and not data.get("receiver") and not data["message"].startswith("§9[Discord]"):
                 channel = self.bot.get_channel(self.setting.dc_setting.get("channel"))
-                future = run_coroutine_threadsafe(channel.send(f"[Minecraft] {data["sender"]}: {data["message"]}"), self.bot.loop)
+                future = run_coroutine_threadsafe(channel.send(f"**[Minecraft]** {data["sender"]}: {data["message"]}"), self.bot.loop)
         
         self.server.run_forever()
         
