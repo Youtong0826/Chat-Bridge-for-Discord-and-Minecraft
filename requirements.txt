@@ -1,2 +1,2 @@
 python-dotenv
-websocket_server
+git+https://github.com/Youtong0826/python-websocket-server.git
