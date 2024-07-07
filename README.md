@@ -25,6 +25,7 @@ TOKEN="Your Discord Bot Token"
 
 #### 啟用:
 設定完畢後進入 `src/` 執行 `main.py`，任何可以啟動 python 檔案的方法都行
+
 接著回到 Minecraft 世界，輸入指令 `/wsserver host:port` (e.g `/wsserver 127.0.0.1:9000`)
 這樣就成功啦 !
 
