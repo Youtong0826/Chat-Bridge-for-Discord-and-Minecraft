@@ -1,29 +1,48 @@
-from uuid import uuid4
 import logging
 import json
 
-from websocket_server import WebsocketServer, WebSocketHandler
-from client import WebSocketClient
+from uuid import uuid4
+from os import getenv
+from dotenv import load_dotenv
+from discord import (
+    Bot,
+    Message,
+    Intents
+)
 
-server = WebsocketServer(port=9001, loglevel=logging.INFO)
+from core.server import WebSocketServerThreading
+from core.setting import Setting
 
-@server.on_new_client()
-def new_client(client: WebSocketClient, server: WebsocketServer):
-    print(f"a new client connected. id: {client["id"]} address: {client["address"][0]}:{client["address"][1]}")
-    server.send_message(client, json.dumps({
-        "header": {
-            "version": 1,                     
-            "requestId": str(uuid4()),           
-            "messageType": "commandRequest",  
-            "messagePurpose": "subscribe" 
-        },
-        "body": {
-            "eventName": "PlayerMessage"
-        }
-    }, indent=4))
+load_dotenv()
 
-@server.on_message_received()
-def message_received(client: WebSocketClient, server: WebsocketServer, message: dict):
-    print(message)
+bot = Bot(intents=Intents.all())
+setting = Setting()
+websocket = WebSocketServerThreading(bot, setting.ws_setting["host"], setting.ws_setting["port"], logging.INFO)
+@bot.event
+async def on_ready():
+    print(">> Bot is online <<")
 
-server.run_forever()    
+@bot.event
+async def on_message(msg: Message):
+    if msg.author.bot: return
+    
+    if msg.channel.id == setting.dc_setting.get("channel"):
+        websocket.client.send_message(json.dumps({  
+	        "header": {
+	        	"version": 1,
+                "requestId": str(uuid4()),
+	        	"messageType": "commandRequest",
+                "messagePurpose": "commandRequest"
+	        },
+            "body": {
+	        	"origin": {
+	        		"type": "player"
+	        	},
+	        	"commandLine": 'tellraw @a {"rawtext":[{"text": "%s"}]}' % f"§9[Discord] §r{msg.author.name}: {msg.content}",
+	        	"version": 1
+	        },
+        }))
+    
+if __name__ == "__main__":
+    websocket.start()
+    bot.run(getenv("TOKEN"))
