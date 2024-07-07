@@ -38,7 +38,7 @@ async def on_message(msg: Message):
 	        	"origin": {
 	        		"type": "player"
 	        	},
-	        	"commandLine": 'tellraw @a {"rawtext":[{"text": "%s"}]}' % f"§9[Discord] §r{msg.author.name}: {msg.content}",
+	        	"commandLine": 'tellraw @a {"rawtext":[{"text": "%s"}]}' % f"§9[Discord] §e{msg.author.name}§r: {msg.content}",
 	        	"version": 1
 	        },
         }))
