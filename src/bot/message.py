@@ -29,12 +29,12 @@ class MessageEvents(Cog):
 
         if msg.channel.id == self.bot.setting.discord.get("channel"):
             self.websocket.client.send_message(dumps({  
-	            "header": {
+                "header": {
                     "version": 1,
                     "requestId": str(uuid4()),
                     "messageType": "commandRequest",
                     "messagePurpose": "commandRequest"
-	            },
+                },
                 "body": {
                     "origin": {
                         "type": "player"
@@ -44,7 +44,7 @@ class MessageEvents(Cog):
                         msg=msg.content
                     ),
                     "version": 1
-	            },
+                },
             }))
             
 def setup(bot: Bot):
