@@ -45,6 +45,8 @@ TOKEN = "Your Discord Bot Token"
 
 接著回到 Minecraft 世界，輸入指令 `/wsserver host:port` 或是 `/connect host:port` (e.g `/wsserver 127.0.0.1:9000`) 這樣就成功啦 !
 
+備註: 需開啟作弊或是創造模式
+
 #### 預覽:
 ![alt text](assets/chat1.png)
 
