@@ -19,7 +19,7 @@ pip install -r requirements.txt
 TOKEN="Your Discord Bot Token"
 ```
 
-接著到 `setting.json` 設定各種內容
+接著可以到 `setting.json` 設定各項內容
 ```js
 {
     "server": { // 主機位址
