@@ -46,7 +46,7 @@ class WebSocketServerThreading:
             data: dict = message.get("body")
             header: dict = message.get("header")
             print(message)
-            if header.get("eventName") == "PlayerMessage" and data["sender"] not in ['外部', 'External']:
+            if header.get("eventName") == "PlayerMessage" and data["type"] == "chat":
                 channel = self.bot.get_channel(self.bot.setting.discord.get("channel"))
                 run_coroutine_threadsafe(channel.send(self.bot.setting.discord["message"].format(user=data["sender"], msg=data["message"])), self.bot.loop)
         
