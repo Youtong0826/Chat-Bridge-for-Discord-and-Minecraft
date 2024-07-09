@@ -18,7 +18,7 @@ pip install -r requirements.txt
 
 在最外層創建 `.env` 檔案並寫入你的 Discord 機器人 Token
 ```
-TOKEN="Your Discord Bot Token"
+TOKEN = "Your Discord Bot Token"
 ```
 
 接著可以到 `setting.json` 設定各項內容
