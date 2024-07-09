@@ -1,5 +1,7 @@
 # Chat Bridge for Discord and Minecraft
-不用任何插件，不用任何模組，不用任何 Add-on，只要原版世界就可以讓人們在 Discord 與 Minecraft 之間聊天 ! (僅限基岩版)
+不用任何插件，不用任何模組，不用任何 Add-on，只要原版世界就可以讓人們在 Discord 與 Minecraft 之間聊天 ! 
+
+(僅限基岩版)
 
 ### 使用條件:
 * Minecraft BE
