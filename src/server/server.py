@@ -1,19 +1,26 @@
 import logging
-import json
 
-from asyncio import run_coroutine_threadsafe
 from threading import Thread
 from uuid import uuid4
-from websocket_server import WebsocketServer, WebSocketHandler
-from discord import Bot
-from core.client import WebSocketClient
-from core.setting import Setting
+from asyncio import run_coroutine_threadsafe
+
+from json import (
+    loads, 
+    dumps
+)
+
+from websocket_server import (
+    WebsocketServer, 
+    WebSocketHandler
+)
+
+from server.client import WebSocketClient
+from bot import Bot
 
 class WebSocketServerThreading:
     def __init__(self, bot: Bot, host: str = "127.0.0.1", port: int = 0, loglevel: logging = logging.WARN) -> None:
         self.server = WebsocketServer(host=host, port=port, loglevel=loglevel)
         self.client: WebSocketHandler = None
-        self.setting = Setting()
         self.bot = bot
         
     def active(self):
@@ -21,7 +28,7 @@ class WebSocketServerThreading:
         def new_client(client: WebSocketClient, server: WebsocketServer):
             print(f"a new client connected. id: {client["id"]} address: {client["address"][0]}:{client["address"][1]}")
             self.client = client["handler"]
-            server.send_message(client, json.dumps({
+            server.send_message(client, dumps({
                 "header": {
                     "version": 1,                     
                     "requestId": str(uuid4()),           
@@ -35,13 +42,13 @@ class WebSocketServerThreading:
 
         @self.server.on_message_received()
         def message_received(client: WebSocketClient, server: WebsocketServer, message: dict):
-            message = json.loads(message)
+            message = loads(message)
             data: dict = message.get("body")
             header: dict = message.get("header")
-
-            if header.get("eventName") == "PlayerMessage" and not data.get("receiver") and not data["message"].startswith("§9[Discord]"):
-                channel = self.bot.get_channel(self.setting.dc_setting.get("channel"))
-                future = run_coroutine_threadsafe(channel.send(f"**[Minecraft]** {data["sender"]}: {data["message"]}"), self.bot.loop)
+            print(message)
+            if header.get("eventName") == "PlayerMessage" and data["sender"] not in ['外部', 'External']:
+                channel = self.bot.get_channel(self.bot.setting.discord.get("channel"))
+                run_coroutine_threadsafe(channel.send(self.bot.setting.discord["message"].format(user=data["sender"], msg=data["message"])), self.bot.loop)
         
         self.server.run_forever()
         
