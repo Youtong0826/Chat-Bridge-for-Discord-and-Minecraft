@@ -18,7 +18,7 @@ pip install -r requirements.txt
 
 在最外層創建 `.env` 檔案並寫入你的 Discord 機器人 Token
 ```
-TOKEN="Your Discord Bot Token"
+TOKEN = "Your Discord Bot Token"
 ```
 
 接著可以到 `setting.json` 設定各項內容
@@ -37,6 +37,8 @@ TOKEN="Your Discord Bot Token"
     }
 }
 ```
+
+最後進去 Minecraft 設定 -> `一般` -> `網路設定` -> `需要有加密的 WebSockets` 關掉 
 
 #### 啟用:
 設定完畢後進入 `src/` 執行 `main.py`，任何可以啟動 python 檔案的方法都行
