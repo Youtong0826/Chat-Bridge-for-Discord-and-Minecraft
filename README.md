@@ -1,5 +1,7 @@
 # Chat Bridge for Discord and Minecraft
-讓人們在 Discord 與 Minecraft 之間聊天吧 ! (僅限基岩版)
+不用任何插件，不用任何模組，不用任何 Add-on，只要原版世界就可以讓人們在 Discord 與 Minecraft 之間聊天 ! 
+
+(僅限基岩版)
 
 ### 使用條件:
 * Minecraft BE
@@ -19,7 +21,7 @@ pip install -r requirements.txt
 TOKEN="Your Discord Bot Token"
 ```
 
-接著到 `setting.json` 設定各種內容
+接著可以到 `setting.json` 設定各項內容
 ```js
 {
     "server": { // 主機位址
