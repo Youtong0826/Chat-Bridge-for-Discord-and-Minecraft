@@ -19,9 +19,22 @@ pip install -r requirements.txt
 TOKEN="Your Discord Bot Token"
 ```
 
-接著到 `discord.json` 設定訊息的頻道 id
-
-`setting.json` 可以設定主機位址
+接著到 `setting.json` 設定各種內容
+```js
+{
+    "server": { // 主機位址
+        "host": "127.0.0.1",
+        "port": 9000
+    },
+    "discord": {
+        "channel": 1259342904309321831, // dicsord 的頻道 id
+        "message": "**[Minecraft]**  **` {user} `** : {msg}" // discord 端的訊息的樣板 {user} 是名字 {msg} 則是訊息
+    },
+    "minecraft": {
+        "message": "§9[Discord] §e{user}§r: {msg}" // Minecraft 端的訊息樣板，同上
+    }
+}
+```
 
 #### 啟用:
 設定完畢後進入 `src/` 執行 `main.py`，任何可以啟動 python 檔案的方法都行
