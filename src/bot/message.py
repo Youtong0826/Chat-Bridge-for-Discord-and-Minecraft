@@ -42,8 +42,7 @@ class MessageEvents(Cog):
                     "commandLine": 'tellraw @a {"rawtext":[{"text": "%s"}]}' % self.bot.setting.minecraft["message"].format(
                         user=msg.author.global_name if msg.author.global_name else msg.author.name, 
                         msg=msg.content
-                    ),
-                    "version": 1
+                    )
                 },
             }))
             
