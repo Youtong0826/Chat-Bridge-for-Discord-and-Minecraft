@@ -31,7 +31,7 @@ TOKEN="Your Discord Bot Token"
         "message": "**[Minecraft]**  **` {user} `** : {msg}" // discord 端的訊息的樣板 {user} 是名字 {msg} 則是訊息
     },
     "minecraft": {
-        "message": "§9[Discord] §e{user}§r: {msg}" // Minecraft 端的訊息樣板，同上
+        "message": "§9[Discord] §e{user} §r: {msg}" // Minecraft 端的訊息樣板，同上
     }
 }
 ```
