@@ -1,0 +1,13 @@
+{
+    "server": {
+        "host": "127.0.0.1",
+        "port": 9000
+    },
+    "discord": {
+        "channel": 1259342904309321831,
+        "message": "**[Minecraft]**  **` {user} `** : {msg}"
+    },
+    "minecraft": {
+        "message": "§9[Discord] §e{user}§r: {msg}"
+    }
+}
