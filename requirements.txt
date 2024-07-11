@@ -1,2 +1,3 @@
 python-dotenv
 git+https://github.com/Youtong0826/python-websocket-server.git
+git+https://github.com/Pycord-Development/pycord.git
