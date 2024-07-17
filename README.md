@@ -62,3 +62,12 @@ INFO:Discord:>> Bot is online <<
 ![alt text](assets/chat1.png)
 
 ![alt text](assets/chat2.png)
+
+shell:
+```
+INFO:Minecraft:a new client connected. id: 1 address: 127.0.0.1:60869
+INFO:Minecraft:received a message: "hi" by user youtong08266142
+INFO:Discord:received a message: "Hello" by user Youtong
+INFO:Minecraft:received a message: "cool~" by user youtong08266142
+INFO:Discord:received a message: "awa" by user Youtong
+```
