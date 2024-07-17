@@ -7,28 +7,32 @@ from discord import (
     Message,
 )
 
-from server import WebSocketServerThreading
+from server import BridgeThread
 from bot import Bot
+
+logger = logging.getLogger("Discord")
+logger.setLevel(logging.INFO)
 
 class MessageEvents(Cog):
     def __init__(self, bot: Bot) -> None:
         self.bot = bot
         
-        self.websocket = WebSocketServerThreading(
+        self.bridge = BridgeThread(
             bot, 
             bot.setting.server["host"], 
             bot.setting.server["port"], 
             loglevel=logging.INFO
         )
         
-        self.websocket.start()
+        self.bridge.start()
         
     @Cog.listener()
     async def on_message(self, msg: Message):
         if msg.author.bot: return
 
-        if msg.channel.id == self.bot.setting.discord.get("channel"):
-            self.websocket.client.send_message(dumps({  
+        if msg.channel.id == self.bot.setting.discord.get("channel") and self.bridge.is_ready():
+            logger.info(f'received a message: "{msg.content}" by user {msg.author.global_name if msg.author.global_name else msg.author.name}')
+            self.bridge.client.send_message(dumps({  
                 "header": {
                     "version": 1,
                     "requestId": str(uuid4()),
