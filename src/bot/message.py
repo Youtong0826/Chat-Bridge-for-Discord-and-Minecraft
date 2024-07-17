@@ -11,7 +11,6 @@ from server import BridgeThread
 from bot import Bot
 
 logger = logging.getLogger("Discord")
-logger.setLevel(logging.INFO)
 
 class MessageEvents(Cog):
     def __init__(self, bot: Bot) -> None:
