@@ -1,1 +1,1 @@
-from server.server import WebSocketServerThreading
+from server.server import BridgeThread
