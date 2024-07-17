@@ -41,7 +41,18 @@ TOKEN = "Your Discord Bot Token"
 最後進去 Minecraft 設定 -> `一般` -> `網路設定` -> `需要有加密的 WebSockets` 關掉 
 
 #### 啟用:
-設定完畢後進入 `src/` 執行 `main.py`，任何可以啟動 python 檔案的方法都行
+設定完畢後執行 `src/main.py`，任何可以啟動 python 檔案的方法都行 
+舉例:
+```shell
+cd D:\GitHub\Chat-Bridge-for-Discord-and-Minecraft
+python src/main.py
+```
+成功的話會出現這些訊息
+```shell
+INFO:websocket_server.websocket_server:Listening on port 9000 for clients..
+INFO:websocket_server.websocket_server:Starting BridgeWebSocketServer on main thread.
+INFO:Discord:>> Bot is online <<
+```
 
 接著回到 Minecraft 世界，輸入指令 `/wsserver host:port` 或是 `/connect host:port` (e.g `/wsserver 127.0.0.1:9000`) 這樣就成功啦 !
 
