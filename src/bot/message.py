@@ -29,7 +29,9 @@ class MessageEvents(Cog):
     async def on_message(self, msg: Message):
         if msg.author.bot: return
 
-        if msg.channel.id == self.bot.setting.discord.get("channel") and self.bridge.is_ready():
+        if msg.channel.id == self.bot.setting.discord.get("channel") \
+        and self.bridge.is_ready()                                   \
+        and not self.bot.is_emoji(msg.content):
             logger.info(f'received a message: "{msg.content}" by user {msg.author.global_name if msg.author.global_name else msg.author.name}')
             self.bridge.client.send_message(dumps({  
                 "header": {
