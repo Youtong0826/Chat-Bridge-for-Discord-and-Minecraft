@@ -1,3 +1,4 @@
+from re import findall
 from discord import Bot
 from setting import Setting
 
@@ -8,3 +9,8 @@ class Bot(Bot):
     @property
     def setting(self):
         return Setting()
+
+    @staticmethod
+    def is_emoji(content: str):
+        result = findall("<:\w+:\d+>|<\w+:\w+:\d+>", content) 
+        return bool(result)
