@@ -32,6 +32,7 @@ class BridgeThread:
         self.server = BridgeWebSocketServer(host=host, port=port, loglevel=loglevel)
         self.client: WebSocketHandler = None
         self.bot = bot
+        self.thread = Thread(target=self.active, name="bridge")
         
     def __bool__(self) -> bool:
         return self.is_ready()
@@ -75,6 +76,5 @@ class BridgeThread:
         
         self.server.run_forever()
         
-    def start(self):
-        self.thread = Thread(target=self.active, name="bridge")
+    def start(self):  
         self.thread.start()
