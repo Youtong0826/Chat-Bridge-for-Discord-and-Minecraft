@@ -12,5 +12,4 @@ class Bot(Bot):
 
     @staticmethod
     def is_emoji(content: str):
-        result = findall("<:\w+:\d+>|<\w+:\w+:\d+>", content) 
-        return bool(result)
+        return bool(findall("<:\w+:\d+>|<\w+:\w+:\d+>", content))
