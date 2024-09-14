@@ -10,7 +10,9 @@ load_dotenv()
 logger = logging.getLogger("Discord")
 logger.setLevel(logging.INFO)
 
-bot = Bot(intents=Intents.all())
+intents = Intents.default()
+intents.message_content = True
+bot = Bot(intents=intents)
 
 @bot.event
 async def on_ready():
