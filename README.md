@@ -1,7 +1,8 @@
 # Chat Bridge for Discord and Minecraft
-不用任何插件，不用任何模組，不用任何 Add-on，只要原版世界就可以讓人們在 Discord 與 Minecraft 之間聊天 ! 
+不用任何插件，不用任何模組，不用任何 Add-on，只要原版世界就可以讓人們在 Discord 與 Minecraft 之間聊天 ! (僅限基岩版)
 
-(僅限基岩版)
+### 實現原理
+透過 WebSocket Server 與 Minecraft Client 之間進行連線，server 會先對 client 發送訂閱請求，client 接收到請求後就會自動監聽 Minecraft 聊天室的新訊息並回傳給 server，server 接收到訊息後再利用 Discord API 將訊息傳至 Discord 的聊天頻道，同時 server 也會監聽 Discord 頻道是否有新訊息並對 client 發送傳送訊息的請求，client 收到請求後就會根據內容傳到 Minecraft 聊天室。
 
 ### 使用條件:
 * Minecraft BE
