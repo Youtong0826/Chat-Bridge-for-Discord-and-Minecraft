@@ -6,7 +6,7 @@
 
 ### 使用條件:
 * Minecraft BE
-* Python >= 3.8
+* Python $\ge$ 3.8
 
 ### 使用方法:
 
