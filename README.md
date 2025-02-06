@@ -1,22 +1,13 @@
 # Chat Bridge for Discord and Minecraft
 不用任何插件，不用任何模組，不用任何 Add-on，只要原版世界就可以讓人們在 Discord 與 Minecraft 之間聊天 ! (僅限基岩版)
 
-### 實現原理
-透過 WebSocket Server 與 Minecraft Client 之間進行連線。
-
-## server
-先對客戶端發送訂閱請求，接收到訊息後再利用 Discord API 將訊息傳至 Discord 的聊天頻道，同時也會監聽 Discord 頻道是否有新訊息並對客戶端發送訊息。
-
-## client
-客戶端接收到伺服端的請求後就會自動監聽 Minecraft 聊天室的新訊息並回傳給伺服端，收到伺服端的訊息後就會根據內容傳到 Minecraft 聊天室。
-
-### 使用條件:
+## 使用條件:
 * Minecraft BE
 * Python $\ge$ 3.8
 
-### 使用方法:
+## 使用方法:
 
-#### 設定:
+### 設定:
 
 使用以下指令來下載所需套件
 ``` 
@@ -47,7 +38,7 @@ TOKEN = "Your Discord Bot Token"
 
 最後進去 Minecraft 設定 -> `一般` -> `網路設定` -> `需要有加密的 WebSockets` 關掉 
 
-#### 啟用:
+### 啟用:
 設定完畢後執行 `src/main.py`，任何可以啟動 python 檔案的方法都行 \
 舉例:
 ```shell
@@ -65,7 +56,7 @@ INFO:Discord:>> Bot is online <<
 
 備註: 需開啟作弊或是創造模式
 
-#### 預覽:
+### 預覽:
 ![alt text](assets/chat1.png)
 
 ![alt text](assets/chat2.png)
